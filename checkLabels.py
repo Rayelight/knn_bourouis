@@ -1,8 +1,8 @@
 import sys
 
 allLabels = ['0','1','2','3']
-nbLines = 2000
-fd =open(sys.argv[1],'r')
+nbLines = 4000
+fd = open(sys.argv[1],'r')
 lines = fd.readlines()
 
 count=0
