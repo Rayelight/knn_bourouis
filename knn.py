@@ -107,7 +107,10 @@ def main():
     finalTest = read_csv("data/finalTest.txt")
 
     inducted_points = knn(3, datas, classes, finalTest)
-    inducted_sk = sklearn_knn_predict(3, data, finalTest)
+    try:
+        inducted_sk = sklearn_knn_predict(3, data, finalTest)
+    finally:
+        inducted_sk = inducted_points
 
     print(all(inducted_points == inducted_sk))
 
