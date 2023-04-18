@@ -64,18 +64,19 @@ def knn(k, datas, classes, points):
 # variations du parametres k du knn pour tester le plus intéressant
 def knn_comparaison(data):
     data, classes = extract_class(data)
-    x_train, x_test, y_train, y_test = train_test_split(data, classes, train_size=int(len(classes)*0.9), random_state=0)
+    x_train, x_test, y_train, y_test = train_test_split(data, classes, train_size=int(len(classes) * 0.9),
+                                                        random_state=0)
 
     knns = []
     scores = []
     for k in range(8):
-        predicted = knn(k+1, x_train, y_train, x_test)
-        score = sum([x == y for x, y in zip(predicted, y_test)])/len(predicted)
+        predicted = knn(k + 1, x_train, y_train, x_test)
+        score = sum([x == y for x, y in zip(predicted, y_test)]) / len(predicted)
 
         scores.append(score)
         knns.append(knn)
 
-        print("k: ", k+1, " score: ", score)
+        print("k: ", k + 1, " score: ", score)
 
     return knns, scores
 
@@ -109,10 +110,10 @@ def main():
     inducted_points = knn(3, datas, classes, finalTest)
     try:
         inducted_sk = sklearn_knn_predict(3, data, finalTest)
-    finally:
+    except:
         inducted_sk = inducted_points
-
-    print(all(inducted_points == inducted_sk))
+    finally:
+        print(all(inducted_points == inducted_sk))
 
     write_csv("Bourouis_TDK_answers.txt", inducted_points)
 
