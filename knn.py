@@ -4,9 +4,8 @@ import math
 try:
     from sklearn.neighbors import KNeighborsClassifier
     from sklearn.model_selection import train_test_split
-finally:
+except:
     pass
-
 
 def extract_class(rows):
     classes = []
@@ -115,7 +114,7 @@ def main():
     finally:
         print(all(inducted_points == inducted_sk))
 
-    write_csv("Bourouis_TDK_answers.txt", inducted_points)
+    write_csv("Bourouis_Bonnett_TDK.txt", inducted_points)
 
 
 if __name__ == "__main__":
